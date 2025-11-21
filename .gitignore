@@ -1,0 +1,25 @@
+# dependencias
+node_modules/
+
+# variables de entorno y credenciales
+.env
+.env.*
+
+# logs y temporales
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# compilados o cachés
+dist/
+build/
+.parcel-cache/
+.turbo/
+.vercel/
+
+# sistema operativo / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

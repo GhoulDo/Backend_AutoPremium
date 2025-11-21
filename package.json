@@ -1,0 +1,41 @@
+{
+  "name": "autopremium-backend",
+  "version": "1.0.0",
+  "description": "API backend para AutoPremium, concesionario de autos de lujo",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "lint": "eslint src --ext .js",
+    "seed": "node src/scripts/seed.js"
+  },
+  "keywords": [
+    "autos",
+    "luxury",
+    "express",
+    "postgresql"
+  ],
+  "author": "AutoPremium",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.1.0"
+  }
+}
+
