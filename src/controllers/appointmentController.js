@@ -42,6 +42,19 @@ export const createAppointment = async (req, res, next) => {
       return res.status(409).json({ error: 'El vehículo ya tiene una cita en el horario seleccionado' })
     }
 
+    const userConflict = await query(`
+      SELECT 1
+      FROM appointments
+      WHERE user_id = $1
+        AND status IN ('pendiente', 'confirmada')
+        AND scheduled_at BETWEEN ($2::timestamptz) - INTERVAL '1 hour' AND ($2::timestamptz) + INTERVAL '1 hour'
+      LIMIT 1
+    `, [req.user.id, scheduledDate])
+
+    if (userConflict.rowCount > 0) {
+      return res.status(409).json({ error: 'Ya tienes una cita programada en ese horario' })
+    }
+
     const result = await query(`
       INSERT INTO appointments (user_id, vehicle_id, scheduled_at, notes)
       VALUES ($1, $2, $3, $4)

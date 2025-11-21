@@ -6,16 +6,18 @@ import {
   listAllAppointments,
   updateAppointmentStatus
 } from '../controllers/appointmentController.js'
+import { validate } from '../middleware/validate.js'
+import { createAppointmentSchema, updateAppointmentStatusSchema } from '../validation/appointmentSchemas.js'
 
 const router = Router()
 
 router.use(authenticate)
 
-router.post('/', createAppointment)
+router.post('/', validate(createAppointmentSchema), createAppointment)
 router.get('/me', listMyAppointments)
 
 router.get('/', authorizeRoles('administrador'), listAllAppointments)
-router.patch('/:id/status', authorizeRoles('administrador'), updateAppointmentStatus)
+router.patch('/:id/status', authorizeRoles('administrador'), validate(updateAppointmentStatusSchema), updateAppointmentStatus)
 
 export default router
 

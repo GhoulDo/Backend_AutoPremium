@@ -9,6 +9,7 @@ import vehicleRoutes from './routes/vehicleRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import appointmentRoutes from './routes/appointmentRoutes.js'
 import { bootstrapData } from './utils/bootstrap.js'
+import { ApiError } from './utils/ApiError.js'
 
 dotenv.config()
 
@@ -30,6 +31,10 @@ app.use('/api/appointments', appointmentRoutes)
 
 app.use((err, req, res, next) => {
   console.error(err)
+  if (err instanceof ApiError) {
+    return res.status(err.status).json({ error: err.message })
+  }
+
   const status = err.status || 500
   res.status(status).json({
     error: err.message || 'Error interno del servidor'

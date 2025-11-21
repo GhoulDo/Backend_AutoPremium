@@ -255,3 +255,7 @@ Authorization: Bearer <token>
 - Administrador: `POST/PATCH/DELETE /api/vehicles`, `GET /api/users`, `PATCH /api/users/:userId/role`, `GET /api/appointments`, `PATCH /api/appointments/:id/status`
 
 Con esta guía, el equipo móvil puede estructurar pantallas, manejar estados y conectar servicios al backend AutoPremium.
+
+## Documentación extendida
+
+Consulta `docs/API.md` para ejemplos completos de peticiones/respuestas, variables de entorno y recomendaciones adicionales para el equipo móvil y QA.
